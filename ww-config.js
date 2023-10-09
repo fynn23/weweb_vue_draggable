@@ -15,13 +15,20 @@ export default {
       },
   },
   triggerEvents: [
-      {
-          name: "update:list",
-          label: { en: "On List update" },
-          event: { value: "" },
-          getTestEvent: "getTestEvent",
-          default: true,
+    {
+      name: 'item:moved',
+      label: { en: 'On item moved' },
+      event: {
+        item: {},
+        from: '',
+        to: '',
+        oldIndex: 0,
+        newIndex: 1,
+        updatedList: []
       },
+      getTestEvent: 'getTestEvent',
+      default: true
+    },
   ],
   properties: {
       data: {
