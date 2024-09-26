@@ -28,38 +28,6 @@ export default {
     },
     emits: ["trigger-event"],
     setup() {
-        provide('customHandler', (change, {stack: stackValue, updatedStackItems}) => {
-      if (change.moved) {
-        emit('trigger-event', { 
-          name: 'item:moved', 
-          event: { 
-            item: change.moved.element,
-            from: stackValue,
-            to: stackValue,
-            oldIndex: change.moved.oldIndex,
-            newIndex: change.moved.newIndex,
-            updatedList: updatedStackItems
-          }
-        })
-      }
-
-      if (change.added) {
-        emit('trigger-event', {
-          name: 'item:moved',
-          event: {
-            item: change.added.element,
-            from: wwLib.resolveObjectPropertyPath(change.added.element, props.content.stackedBy),
-            to: stackValue,
-            oldIndex: null,
-            newIndex: change.added.newIndex,
-            updatedList: updatedStackItems
-          }
-        })
-      }
-    })
-
-
-
         return { layoutStyle: wwLib.useLayoutStyle() };
     },
     computed: {
