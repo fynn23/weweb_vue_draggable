@@ -1,91 +1,111 @@
 export default {
     options: {
-        layout: ["flex"],
+      layout: ["flex"],
+  
+      // Erlaube bestimmte display-Eigenschaften für die Elemente
+      displayAllowedValues: ['flex', 'block', 'inline-block'],  // flex für Flexbox-Layouts hinzufügen
+  
+      // Ignoriere bestimmte Style-Properties, die in der WeWeb-Konfiguration nicht verwaltet werden sollen
+      ignoredStyleProperties: ['overflow', 'background'],  // Ignoriere overflow und background, wenn es in der Komponente festgelegt wird
     },
+  
     inherit: {
-        type: "ww-layout",
+      type: "ww-layout",
     },
+  
     editor: {
-        label: {
-            en: "Sortable list",
-        },
+      label: {
+        en: "Sortable list",
+      },
+      icon: "border",
+      bubble: {
         icon: "border",
-        bubble: {
-            icon: "border",
-        },
+      },
     },
+  
     triggerEvents: [
-        {
-            name: "update:list",
-            label: { en: "On List update" },
-            event: { value: "" },
-            getTestEvent: "getTestEvent",
-            default: true,
-        },
+      {
+        name: "update:list",
+        label: { en: "On List update" },
+        event: { value: "" },
+        getTestEvent: "getTestEvent",
+        default: true,
+      },
     ],
+  
     properties: {
-        data: {
-            bindable: true,
-            section: "settings",
-            label: "Items",
-            type: "Info",
-            options: {
-                text: { en: "Elements to repeat" },
-            },
-            // defaultValue: { __wwtype: "f", code: "variables['93b8b0a2-7d31-4cb5-bd39-2b333ec8b595']" },
+      // Neues Property für Flex-Richtung
+      flexDirection: {
+        label: { en: "Flex Direction" },
+        type: "TextSelect",   // Ermöglicht die Auswahl von Werten im Editor
+        options: {
+          choices: [
+            { value: 'row', label: { en: "Horizontal" } },
+            { value: 'column', label: { en: "Vertical" } },
+          ],
         },
-        idPath: {
-            label: {
-                en: "Unique id",
-            },
-            type: "ObjectPropertyPath",
-            options: (content) => ({
-                object: getDataObject(content),
-            }),
-            hidden: (content) => !hasData(content),
-            section: "settings",
-            // defaultValue: "['id']",
+        defaultValue: 'row',  // Standardwert auf 'row' setzen
+      },
+      data: {
+        bindable: true,
+        section: "settings",
+        label: "Items",
+        type: "Info",
+        options: {
+          text: { en: "Elements to repeat" },
         },
-        handle: {
-            label: "Handle class",
-            type: "Text",
-            section: "settings",
-            // defaultValue: "handle",
+      },
+      idPath: {
+        label: {
+          en: "Unique id",
         },
-        group: {
-            label: "Group Id",
-            type: "Text",
-            section: "settings",
-            // defaultValue: "artist",
+        type: "ObjectPropertyPath",
+        options: (content) => ({
+          object: getDataObject(content),
+        }),
+        hidden: (content) => !hasData(content),
+        section: "settings",
+      },
+      handle: {
+        label: "Handle class",
+        type: "Text",
+        section: "settings",
+      },
+      group: {
+        label: "Group Id",
+        type: "Text",
+        section: "settings",
+      },
+      itemContainer: {
+        hidden: true,
+        defaultValue: {
+          isWwObject: true,
+          type: "ww-flexbox",
         },
-        itemContainer: {
-            hidden: true,
-            defaultValue: {
-                isWwObject: true,
-                type: "ww-flexbox",
-                // _state: { classes: { default: ["7dd87252-2873-4924-b85a-0cd3443e23eb"] } },
-            },
-        },
+      },
     },
   };
   
+  // Hilfsfunktionen für Datenobjekte
   function getDataObject(content) {
     if (!content.data) return {};
     if (Array.isArray(content.data)) {
-        return content.data[0] || {};
+      return content.data[0] || {};
     }
     if (Array.isArray(content.data.data)) {
-        return content.data.data[0] || {};
+      return content.data.data[0] || {};
     }
     return {};
   }
+  
   function hasData(content) {
     if (!content.data) return false;
     if (Array.isArray(content.data)) {
-        return content.data.length;
+      return content.data.length;
     }
     if (Array.isArray(content.data.data)) {
-        return content.data.data.length;
+      return content.data.data.length;
     }
     return false;
   }
+  
