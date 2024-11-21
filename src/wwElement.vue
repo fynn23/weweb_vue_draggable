@@ -33,13 +33,13 @@ export default {
     emits: ["trigger-event"],
     setup() {
         console.log("Setup function called");
-        return { layoutStyle: wwLib.useLayoutStyle() };
+        return { layoutStyle: wwLib.wwElement.useLayoutStyle() };
     },
     computed: {
         items: {
             get() {
                 console.log("Getting items from collection data");
-                return wwLib.wwCollection.getCollectionData(this.content.data) || [];
+                return wwLib.wwUtils.getDataFromCollection(this.content.data) || [];
             },
             set(value) {
                 console.log("Setting items with value:", value);
@@ -72,7 +72,7 @@ export default {
         /* wwEditor:start */
         getTestEvent() {
             console.log("Getting test event data");
-            const data = wwLib.wwCollection.getCollectionData(this.content.data);
+            const data = wwLib.wwUtils.getDataFromCollection(this.content.data);
             console.log("Test event data:", data);
             return {
                 value: data,
