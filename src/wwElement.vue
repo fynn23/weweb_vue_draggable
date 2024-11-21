@@ -22,6 +22,10 @@
 <script>
 import draggable from "vuedraggable";
 
+if (process.client) {
+    import("https://drag-drop-touch-js.github.io/dragdroptouch/dist/drag-drop-touch.esm.min.js");
+}
+
 export default {
     components: { draggable },
     props: {
@@ -59,6 +63,7 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
+            options.forceFallback = true; // Enforcing fallback for better touch support
             return options;
         },
     },
