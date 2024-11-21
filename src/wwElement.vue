@@ -6,6 +6,7 @@
         v-model="items"
         :group="group"
         :item-key="itemKey"
+        :animation="200"
         ghost-class="ghost"
         :disabled="isEditing"
         :component-data="{ tag: 'ul', name: 'flip-list', type: 'transition' }"
