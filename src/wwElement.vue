@@ -1,3 +1,4 @@
+@ -1,89 +1,92 @@
 <template>
     <draggable
         v-model="items"
@@ -57,6 +58,7 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
+            options.ghostClass = "ghost"; // Hier wird die Ghost-Class hinzugefügt
             return options;
         },
     },
@@ -84,5 +86,9 @@ export default {
     opacity: 0;
     border: 2px dashed #0f04d5;
     min-height: 50px;
+}
+
+.ghost * {
+    opacity: 0;
 }
 </style>
