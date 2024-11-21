@@ -1,4 +1,3 @@
-@ -1,96 +1,95 @@
 <template>
     <draggable
         v-model="items"
