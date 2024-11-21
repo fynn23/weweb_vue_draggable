@@ -57,7 +57,10 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
-          return options;
+            options.ghostClass = "ghost"; // Hier wird die Ghost-Class hinzugefügt
+            options.forceFallback = true; // Fallback aktivieren, um Touch-Support zu verbessern
+            options.delay = 100; // 100ms Verzögerung für den Drag-Vorgang
+            return options;
         },
     },
     methods: {
