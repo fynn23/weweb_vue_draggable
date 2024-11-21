@@ -4,6 +4,7 @@
         :itemKey="getItemKey"
         :disabled="isEditing"
         :animation="400"
+        ghost-class="ghost-card"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
     >
@@ -79,3 +80,12 @@ export default {
     },
 };
 </script>
+</script>
+
+<style scoped>
+.ghost-card {
+  opacity: 0.5;
+  background: #F7FAFC;
+  border: 1px solid #4299e1;
+}
+</style>
