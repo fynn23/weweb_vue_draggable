@@ -57,7 +57,6 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
-            options.delay = 100;
           return options;
         },
     },
