@@ -1,4 +1,3 @@
-@ -1,89 +1,92 @@
 <template>
     <draggable
         v-model="items"
@@ -7,9 +6,11 @@
         :animation="200"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
+        group="tasks"
+        ghost-class="ghost"
     >
         <template #item="{ element, index }">
-            <div>
+            <div class="draggable-item">
                 <wwLayoutItemContext is-repeat :data="element" :item="null" :index="index">
                     <wwElement v-bind="content.itemContainer" />
                 </wwLayoutItemContext>
@@ -82,11 +83,14 @@ export default {
 
 <style>
 .ghost {
-    border: 2px dashed #0f04d5;
+    opacity: 0.5;
+    background: #F7FAFC;
+    border: 1px solid #4299e1;
     min-height: 50px;
 }
 
-.ghost * {
-    opacity: 0;
+.draggable-item {
+    position: relative;
+    touch-action: none;
 }
 </style>
