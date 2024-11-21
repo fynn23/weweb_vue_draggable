@@ -3,8 +3,7 @@
         v-model="items"
         :itemKey="getItemKey"
         :disabled="isEditing"
-        :animation="400"
-        ghost-class="ghost-card"
+        :animation="200"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
     >
@@ -58,7 +57,7 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
-
+            options.ghostClass = "ghost"; // Hier wird die Ghost-Class hinzugefügt
             return options;
         },
     },
@@ -80,12 +79,10 @@ export default {
     },
 };
 </script>
-</script>
 
-<style scoped>
-.ghost-card {
-  opacity: 0.5;
-  background: #F7FAFC;
-  border: 1px solid #4299e1;
+<style>
+.ghost {
+    opacity: 0.5;
+    border: 2px dashed #ccc;
 }
 </style>
