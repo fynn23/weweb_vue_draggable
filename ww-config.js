@@ -70,6 +70,7 @@ export default {
       },
       sortable: {
           hidden: (content, sidePanelContent, boundProps, wwProps) => !!(wwProps && wwProps.sortable),
+          bindable: true,
           label: {
               en: "Sortable",
           },
