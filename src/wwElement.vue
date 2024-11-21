@@ -195,12 +195,4 @@ export default {
     opacity: 0;
 }
 
-.animated {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
 </style>
