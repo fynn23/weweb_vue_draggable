@@ -1,3 +1,5 @@
+<script src="https://drag-drop-touch-js.github.io/dragdroptouch/dist/drag-drop-touch.esm.min.js" type="module"></script>
+
 <template>
     <draggable
         v-model="items"
@@ -22,9 +24,7 @@
 <script>
 import draggable from "vuedraggable";
 
-if (process.client) {
-    import("https://drag-drop-touch-js.github.io/dragdroptouch/dist/drag-drop-touch.esm.min.js");
-}
+
 
 export default {
     components: { draggable },
