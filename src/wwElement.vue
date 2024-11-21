@@ -81,11 +81,8 @@ export default {
 
 <style>
 .ghost {
+    opacity: 0;
     border: 2px dashed #0f04d5;
     min-height: 50px;
-}
-
-.ghost * {
-    opacity: 0;
 }
 </style>
