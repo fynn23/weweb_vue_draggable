@@ -4,6 +4,16 @@ export default {
           en: "Draggable List",
       },
   },
+
+  triggerEvents: [
+    {
+      name: "update:list",
+      label: { en: "On List update" },
+      event: { value: "" },
+      getTestEvent: "getTestEvent",
+      default: true,
+    },
+  ],
   properties: {
       variableId: {
           label: 'Associated variable',
