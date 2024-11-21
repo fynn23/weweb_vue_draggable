@@ -28,27 +28,34 @@ export default {
     },
     emits: ["trigger-event"],
     setup() {
+        console.log("Setup function called");
         return { layoutStyle: wwLib.useLayoutStyle() };
     },
     computed: {
         items: {
             get() {
+                console.log("Getting items from collection data");
                 return wwLib.wwCollection.getCollectionData(this.content.data) || [];
             },
             set(value) {
+                console.log("Setting items with value:", value);
                 this.$emit("trigger-event", { name: "update:list", event: { value } });
             },
         },
         isEditing() {
+            console.log("Checking if editor is in editing state");
             return this.wwEditorState?.isEditing;
         },
         options() {
+            console.log("Generating options for draggable component");
             const options = {};
             if (this.content.handle?.length) {
                 options.handle = `.${this.content.handle}`;
+                console.log("Handle option set to:", options.handle);
             }
             if (this.content.group) {
                 options.group = this.content.group;
+                console.log("Group option set to:", options.group);
             }
 
             return options;
@@ -56,11 +63,14 @@ export default {
     },
     methods: {
         getItemKey(item) {
-            wwLib.resolveObjectPropertyPath(item, this.content.idPath || "id");
+            console.log("Getting item key for item:", item);
+            return wwLib.resolveObjectPropertyPath(item, this.content.idPath || "id");
         },
         /* wwEditor:start */
         getTestEvent() {
+            console.log("Getting test event data");
             const data = wwLib.wwCollection.getCollectionData(this.content.data);
+            console.log("Test event data:", data);
             return {
                 value: data,
             };
