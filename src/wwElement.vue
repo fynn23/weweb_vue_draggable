@@ -1,4 +1,4 @@
-<script src="https://drag-drop-touch-js.github.io/dragdroptouch/dist/drag-drop-touch.esm.min.js" type="module"></script>
+
 
 <template>
     <draggable
