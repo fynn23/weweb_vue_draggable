@@ -1,5 +1,4 @@
-
-
+@ -1,96 +1,95 @@
 <template>
     <draggable
         v-model="items"
@@ -23,8 +22,6 @@
 
 <script>
 import draggable from "vuedraggable";
-
-
 
 export default {
     components: { draggable },
@@ -63,7 +60,6 @@ export default {
                 options.group = this.content.group;
                 console.log("Group option set to:", options.group);
             }
-            options.forceFallback = true; // Enforcing fallback for better touch support
             return options;
         },
     },
@@ -96,5 +92,6 @@ export default {
 
 .draggable-item {
     position: relative;
+    touch-action: none;
 }
 </style>
