@@ -5,6 +5,7 @@
         :itemKey="getItemKey"
         :disabled="isEditing"
         :animation="200"
+        :clone="cloneDog"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
         group="tasks"
