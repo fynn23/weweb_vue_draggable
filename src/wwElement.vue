@@ -3,7 +3,7 @@
         v-model="items"
         :itemKey="getItemKey"
         :disabled="isEditing"
-        :animation="200"
+        :animation="400"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
     >
