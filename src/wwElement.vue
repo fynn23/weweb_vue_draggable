@@ -178,11 +178,11 @@ export default {
 /** FIX POINTER-EVENTS: ALL BREAKING DRAGGABLE ON MOBILE/TABLET (TOUCH MODE) */
 .draggable-item :deep(.ww-layout) {
     pointer-events: unset !important;
-    transition: transform 0.2s ease;
+    
 }
 .draggable-item :deep(* > .ww-element) {
     pointer-events: unset !important;
-    transition: transform 0.2s ease;
+   
 }
 .draggable-item :deep(** > .ww-element) {
     pointer-events: unset !important;
@@ -193,6 +193,14 @@ export default {
 }
 .ghost * {
     opacity: 0;
+}
+
+.animated {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 </style>
