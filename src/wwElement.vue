@@ -6,7 +6,6 @@
         :group="group"
         :sort="sortable"
         :animation = "200"
-        :transition: transform 0.2s ease;
         :handle="handle?.length ? `.${handle}` : null"
         :disabled="isEditing || isReadonly"
         ghost-class="ghost"
@@ -192,5 +191,8 @@ export default {
 }
 .ghost * {
     opacity: 0;
+}
+.draggable-item {
+    transition: transform 0.2s ease; /* Transition für smooth movement */
 }
 </style>
