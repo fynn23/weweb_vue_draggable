@@ -178,9 +178,11 @@ export default {
 /** FIX POINTER-EVENTS: ALL BREAKING DRAGGABLE ON MOBILE/TABLET (TOUCH MODE) */
 .draggable-item :deep(.ww-layout) {
     pointer-events: unset !important;
+    transition: transform 0.2s ease;
 }
 .draggable-item :deep(* > .ww-element) {
     pointer-events: unset !important;
+    transition: transform 0.2s ease;
 }
 .draggable-item :deep(** > .ww-element) {
     pointer-events: unset !important;
@@ -192,7 +194,5 @@ export default {
 .ghost * {
     opacity: 0;
 }
-.draggable-item {
-    transition: transform 0.2s ease; /* Transition für smooth movement */
-}
+
 </style>
