@@ -8,7 +8,7 @@
         v-bind="options"
     >
         <template #item="{ element, index }">
-            <div>
+            <div class="draggable-item">
                 <wwLayoutItemContext is-repeat :data="element" :item="null" :index="index">
                     <wwElement v-bind="content.itemContainer" />
                 </wwLayoutItemContext>
@@ -58,6 +58,8 @@ export default {
                 console.log("Group option set to:", options.group);
             }
             options.ghostClass = "ghost"; // Hier wird die Ghost-Class hinzugefügt
+            options.forceFallback = true; // Fallback aktivieren, um Touch-Support zu verbessern
+            options.delay = 100; // 100ms Verzögerung für den Drag-Vorgang
             return options;
         },
     },
@@ -88,5 +90,10 @@ export default {
 
 .ghost * {
     opacity: 0;
+}
+
+.draggable-item {
+    position: relative;
+    touch-action: none;
 }
 </style>
