@@ -8,6 +8,7 @@
         :animation = "200"
         :handle="handle?.length ? `.${handle}` : null"
         :disabled="isEditing || isReadonly"
+        ghost-class="ghost"
         @change="onChange"
         @start="setDrag(true)"
         @end="setDrag(false)"
