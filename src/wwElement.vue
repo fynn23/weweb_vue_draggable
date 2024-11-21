@@ -58,7 +58,8 @@ export default {
                 console.log("Group option set to:", options.group);
             }
             options.ghostClass = "ghost"; // Hier wird die Ghost-Class hinzugefügt
-            return options;
+            options.delay = 100;
+          return options;
         },
     },
     methods: {
