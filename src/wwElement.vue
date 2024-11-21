@@ -1,20 +1,19 @@
 <template>
+    <div v-if="!items">Please bind variable</div>
     <draggable
+        v-else
+        tag="transition-group"
         v-model="items"
-        :itemKey="getItemKey"
-        :disabled="isEditing"
-        :animation="200"
-        :clone="cloneDog"
-         @change="log"
-        :style="{ ...$attrs.style, ...layoutStyle }"
-        v-bind="options"
-        :group="{ name: 'people', pull: 'clone', put: false }"
+        :group="group"
+        :item-key="itemKey"
         ghost-class="ghost"
+        :disabled="isEditing"
+        :component-data="{ tag: 'ul', name: 'flip-list', type: 'transition' }"
     >
         <template #item="{ element, index }">
-            <div class="draggable-item">
-                <wwLayoutItemContext is-repeat :data="element" :item="null" :index="index">
-                    <wwElement v-bind="content.itemContainer" />
+            <div>
+                <wwLayoutItemContext :index="index" :item="{}" is-repeat :data="element">
+                    <wwLayout path="itemContent"></wwLayout>
                 </wwLayoutItemContext>
             </div>
         </template>
@@ -23,62 +22,57 @@
 
 <script>
 import draggable from "vuedraggable";
+import { ref } from "vue";
 
 export default {
-    components: { draggable },
+    components: {
+        draggable,
+    },
     props: {
         content: { type: Object, required: true },
-        wwEditorState: { type: Object, default: null },
+        wwElementState: { type: Object, required: true },
+        /* wwEditor:start */
+        wwEditorState: { type: Object, required: true },
+        /* wwEditor:end */
     },
-    emits: ["trigger-event"],
+    emits: ["update:content", "update:content:effect", "trigger-event", "element-event"],
     setup() {
-        console.log("Setup function called");
-        return { layoutStyle: wwLib.wwElement.useLayoutStyle() };
+        return { internalGroup: wwLib.wwUtils.getUid(), items: ref([]) };
     },
     computed: {
+        isEditing() {
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
+        },
         items: {
             get() {
-                console.log("Getting items from collection data");
-                return wwLib.wwUtils.getDataFromCollection(this.content.data) || [];
+                if (!this.content.variableId && !(this.wwElementState.props && this.wwElementState.props.items)) {
+                    return null;
+                }
+                const data =
+                    (this.wwElementState.props && this.wwElementState.props.items) ||
+                    wwLib.wwVariable.getValue(this.content.variableId);
+                if (!Array.isArray(data)) {
+                    return null;
+                } else {
+                    return data;
+                }
             },
-            set(value) {
-                console.log("Setting items with value:", value);
-                this.$emit("trigger-event", { name: "update:list", event: { value } });
+            set(items) {
+                this.$emit("trigger-event", { name: "change", event: { value: items } });
+                this.$emit("element-event", { name: "change", event: { value: items } });
+                if (this.content.variableId) wwLib.wwVariable.updateValue(this.content.variableId, items);
             },
         },
-        isEditing() {
-            console.log("Checking if editor is in editing state");
-            return this.wwEditorState?.isEditing;
+        group() {
+            return (this.wwElementState.props && this.wwElementState.props.group) || this.internalGroup;
         },
-        options() {
-            console.log("Generating options for draggable component");
-            const options = {};
-            if (this.content.handle?.length) {
-                options.handle = `.${this.content.handle}`;
-                console.log("Handle option set to:", options.handle);
-            }
-            if (this.content.group) {
-                options.group = this.content.group;
-                console.log("Group option set to:", options.group);
-            }
-            return options;
+        itemKey() {
+            return (this.wwElementState.props && this.wwElementState.props.itemKey) || this.content.itemKey;
         },
-    },
-    methods: {
-        getItemKey(item) {
-            console.log("Getting item key for item:", item);
-            return wwLib.resolveObjectPropertyPath(item, this.content.idPath || "id");
-        },
-        /* wwEditor:start */
-        getTestEvent() {
-            console.log("Getting test event data");
-            const data = wwLib.wwUtils.getDataFromCollection(this.content.data);
-            console.log("Test event data:", data);
-            return {
-                value: data,
-            };
-        },
-        /* wwEditor:end */
     },
 };
 </script>
