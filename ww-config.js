@@ -3,7 +3,7 @@ export default {
       layout: ["flex"],
   
       // Erlaube bestimmte display-Eigenschaften für die Elemente
-      displayAllowedValues: ['flex', 'block', 'inline-block'],  // flex für Flexbox-Layouts hinzufügen
+      displayAllowedValues: ['flex', 'block', 'inline-block', 'grid'],  // flex für Flexbox-Layouts hinzufügen
   
       // Ignoriere bestimmte Style-Properties, die in der WeWeb-Konfiguration nicht verwaltet werden sollen
       ignoredStyleProperties: ['overflow', 'background'],  // Ignoriere overflow und background, wenn es in der Komponente festgelegt wird
