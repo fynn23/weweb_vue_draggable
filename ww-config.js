@@ -72,6 +72,7 @@ export default {
         section: "settings",
       },
       group: {
+        bindable: true,
         label: "Group Id",
         type: "Text",
         section: "settings",
