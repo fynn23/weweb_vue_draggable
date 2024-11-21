@@ -94,6 +94,7 @@ export default {
 
 .draggable-item {
     position: relative;
-    touch-action: none;
+    touch-action: manipulation
+
 }
 </style>
