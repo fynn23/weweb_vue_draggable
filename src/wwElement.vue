@@ -6,9 +6,10 @@
         :disabled="isEditing"
         :animation="200"
         :clone="cloneDog"
+         @change="log"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
-        group="tasks"
+        :group="{ name: 'people', pull: 'clone', put: false }"
         ghost-class="ghost"
     >
         <template #item="{ element, index }">
