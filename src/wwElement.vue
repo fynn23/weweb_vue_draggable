@@ -6,6 +6,7 @@
         :group="group"
         :sort="sortable"
         :animation = "200"
+        :transition: transform 0.2s ease;
         :handle="handle?.length ? `.${handle}` : null"
         :disabled="isEditing || isReadonly"
         ghost-class="ghost"
