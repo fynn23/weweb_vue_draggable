@@ -83,17 +83,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.flip-list-move {
+  transition: transform 0.5s;
+}
 .ghost {
     opacity: 0.5;
-    background: #F7FAFC;
-    border: 1px solid #4299e1;
-    min-height: 50px;
+    background: #c8ebfb;
 }
-
-.draggable-item {
-    position: relative;
-    touch-action: manipulation
-
+.not-draggable {
+    cursor: no-drop;
 }
 </style>
