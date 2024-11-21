@@ -5,7 +5,7 @@
         :itemKey="getItemKey"
         :disabled="isEditing"
         :animation="200"
-        :fallbackTolerance: 3
+        :fallbackTolerance= "3"
         :style="{ ...$attrs.style, ...layoutStyle }"
         v-bind="options"
         group="tasks"
