@@ -82,7 +82,8 @@ export default {
 
 <style>
 .ghost {
-    opacity: 0.5;
-    border: 2px dashed #ccc;
+    opacity: 0;
+    border: 2px dashed #0f04d5;
+    min-height: 50px;
 }
 </style>
