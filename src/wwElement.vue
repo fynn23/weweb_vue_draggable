@@ -189,10 +189,11 @@ export default {
 }
 .ghost {
     border: 1px dashed #0f04d5;
-    min-height: 50px;
     border-radius: 8px; /* Rundung */
-    opacity: 0.5;
 }
 
+.ghost * {
+    opacity: 0.5; /* Sichtbarkeit auf 25 % */
+}
 
 </style>
