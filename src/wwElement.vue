@@ -188,14 +188,10 @@ export default {
     pointer-events: unset !important;
 }
 .ghost {
-    border: 1px dashed #0f04d5;
+    border: 2px dashed #2B67F5;
     border-radius: 8px; /* Rundung */
     background-color: rgba(240, 240, 240, 0.25); /* Grauer Hintergrund mit Transparenz */
     margin: 5px 0; /* Abstand von 5px oben und unten */
-}
-
-.ghost * {
-    opacity: 0.5; /* Sichtbarkeit auf 25 % */
 }
 
 </style>
