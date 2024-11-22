@@ -190,6 +190,8 @@ export default {
 .ghost {
     border: 2px dashed #0f04d5;
     min-height: 50px;
+    border-radius: 8px; /* Rundung */
+    background-color: #f0f0f0; /* Grauer Hintergrund */
 }
 .ghost * {
     opacity: 0;
