@@ -191,7 +191,6 @@ export default {
     border: 1px dashed #0f04d5;
     border-radius: 8px; /* Rundung */
     background-color: rgba(240, 240, 240, 0.25); /* Grauer Hintergrund mit Transparenz */
-    box-shadow: 0 0 0 2px #0f04d5; /* Simulierte Outline mit Rundung */
     margin: 5px 0; /* Abstand von 5px oben und unten */
 }
 
