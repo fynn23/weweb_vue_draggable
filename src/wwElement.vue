@@ -194,7 +194,7 @@ export default {
     background-color: #f0f0f0; /* Grauer Hintergrund */
 }
 .ghost * {
-    opacity: 0;
+    opacity: 25%;
 }
 
 </style>
