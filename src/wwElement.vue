@@ -191,10 +191,8 @@ export default {
     border: 2px dashed #0f04d5;
     min-height: 50px;
     border-radius: 8px; /* Rundung */
-    background-color: #f0f0f0; /* Grauer Hintergrund */
+    background-color: rgba(240, 240, 240, 0.25); /* Grauer Hintergrund mit 25 % Transparenz */
 }
-.ghost * {
-    opacity: 0.25; /* Sichtbarkeit auf 25 % */
-}
+
 
 </style>
