@@ -117,7 +117,7 @@ export default {
         },
         items() {
             const data = this.wwElementState.props.items ? this.wwElementState.props.items : this.content.items;
-            const items = wwLib.wwCollection.getCollectionData(data);
+            const items = wwLib.wwUtils.getDataFromCollection(data);
             if (!Array.isArray(items)) return [];
             return items;
         },
@@ -189,7 +189,7 @@ export default {
 }
 .ghost {
     border: 2px dashed #2B67F5;
-    border-radius: 8px; /* Rundung */
+    border-radius: 10px; /* Rundung */
     background-color: rgba(240, 240, 240, 0.25); /* Grauer Hintergrund mit Transparenz */
     margin: 5px 0; /* Abstand von 5px oben und unten */
 }
